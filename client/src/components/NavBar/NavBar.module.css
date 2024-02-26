@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 15px;
+  border: 1px solid black;
+  height: 120px;
+  padding-left: 155px;
+}
+
+.form,
+.home {
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  z-index: 1;
+  padding: 5px 25px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+}
+
+.form:hover,
+.home:hover {
+  background-color: #0056b3;
+}

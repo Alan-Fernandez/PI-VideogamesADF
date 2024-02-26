@@ -1,0 +1,50 @@
+.div {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+}
+
+.title {
+  font-family: rowdies;
+  font-size: 60px;
+  padding: 20px;
+  color: rgb(102, 204, 102);
+  background-color: rgb(199, 44, 44); 
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+  font-weight: 700;
+  border: 3px solid #333;
+}
+
+.button {
+  background-color: rgb(5, 94, 104);
+  color: rgb(185, 210, 210);
+  padding: 0.3em;
+  font-family: rowdies;
+  font-size: 3rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
+  transition: 0.3s ease;
+  text-align: center; 
+  margin-top: 10px; 
+  animation: colorChange 6s infinite; 
+}
+
+@keyframes colorChange {
+  0%,
+  100% {
+    background-color: rgb(5, 94, 104);
+  }
+  50% {
+    background-color: rgb(226, 39, 39);
+  }
+}
+.button:hover {
+  transform: scale(
+    1.2
+  )
+}

@@ -1,0 +1,10 @@
+export const BASE_URL = "http://localhost:3001";
+export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
+export const GET_VIDEOGAME_BY_ID = "GET_VIDEOGAME_BY_ID";
+export const CLEAN_DETAIL = "CLEAN_DETAIL";
+export const GET_GENRES = "GET_GENRES";
+export const GET_PLATFORMS = "GET_PLATFORMS";
+export const GET_VIDEOGAMES_BY_NAME = "GET_VIDEOGAMES_BY_NAME";
+export const FILTER_BY_ORIGIN = "FILTER_BY_ORIGIN";
+export const FILTER_BY_GENRES = "FILTER_BY_GENRES";
+export const ORDER_VIDEOGAMES = "ORDER_VIDEOGAMES";

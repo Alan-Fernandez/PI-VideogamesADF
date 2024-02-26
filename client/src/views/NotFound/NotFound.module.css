@@ -1,0 +1,31 @@
+.image-container {
+  position: relative; /* Establecer el contenedor como posición relativa */
+  width: 90vw; /* Ajustar el ancho del contenedor */
+  height: 50vw; /* Ajustar la altura del contenedor */
+  float: right; /* Alinear la imagen a la derecha */
+}
+
+.image {
+  width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+  height: 100%; /* La imagen ocupa todo el alto del contenedor */
+}
+.backButton {
+  position: absolute;
+  top: 40px; /* Posicionar el botón a 20px del borde superior */
+  left: 50px; /* Posicionar el botón a 20px del borde izquierdo */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  z-index: 1;
+}
+
+.backButton:hover {
+  background-color: #0056b3;
+}

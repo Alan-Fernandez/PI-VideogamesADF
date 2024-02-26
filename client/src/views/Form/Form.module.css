@@ -1,0 +1,101 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.labelName,
+.labelDescription,
+.labelImage,
+.labelReleased,
+.labelRating,
+.inputName,
+.inputDescription,
+.inputImage,
+.inputReleased,
+.inputRating,
+.errorName,
+.errorDescription,
+.errorImage,
+.errorReleased,
+.errorRating,
+.divName,
+.divDescription,
+.divImage,
+.divReleased,
+.divRating,
+.selectedGenres,
+.selectedPlatforms,
+.sumitButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.selectedGenres,
+.selectedPlatforms,
+.labelName,
+.labelDescription,
+.labelImage,
+.labelReleased,
+.labelRating {
+  color: rgb(250, 134, 134);
+  font-family: "Press Start 2P", cursive;
+  font-size: 22px;
+}
+
+.errorName,
+.errorDescription,
+.errorImage,
+.errorReleased,
+.errorRating {
+  color: rgb(250, 134, 134);
+  font-family: "Fire", sans-serif;
+  font-size: 25px;
+}
+
+.inputName,
+.inputDescription,
+.inputImage,
+.inputReleased,
+.inputRating {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.genres,
+.platforms {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  background-color: white; /* Fondo blanco */
+}
+
+.submitButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  z-index: 1;
+  margin-bottom: 30px;
+}
+
+.submitButton:hover {
+  background-color: #0056b3;
+}

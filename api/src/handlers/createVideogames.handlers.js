@@ -11,6 +11,7 @@ const createVideogamesHandler = async (req, res) => {
       genres,
       platforms,
     } = req.body;
+
     const newVideogame = await createVideogame(
       name,
       description,
@@ -21,6 +22,7 @@ const createVideogamesHandler = async (req, res) => {
       platforms
     );
     res.status(201).json(newVideogame);
+    
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

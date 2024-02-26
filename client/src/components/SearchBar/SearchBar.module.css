@@ -1,0 +1,37 @@
+.div {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.searchbarInput {
+  top: 40px;
+  left: 50px;
+  background-color: #007bff;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  z-index: 1;
+  gap: 5px;
+}
+
+.button {
+  top: 40px;
+  left: 50px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  z-index: 1;
+}

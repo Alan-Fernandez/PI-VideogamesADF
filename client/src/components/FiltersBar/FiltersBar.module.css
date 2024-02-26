@@ -1,0 +1,60 @@
+.div {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.order,
+.genres,
+.origin {
+  top: 40px;
+  left: 50px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  z-index: 1;
+}
+.order:hover .genres:hover .origin:hover {
+  background-color: #0056b3;
+}
+
+.allVideogames,
+.apiVideogames,
+.dbVideogames {
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #0056b3;
+}
+
+.genresOptions,
+.options {
+  font-size: 14px;
+}
+
+.orderA,
+.orderD,
+.orderRatingA,
+.orderRatingD {
+  font-weight: bold;
+}
+
+.allVideogames:hover,
+.apiVideogames:hover,
+.dbVideogames:hover,
+.genresOptions:hover,
+.options:hover,
+.orderA:hover,
+.orderD:hover,
+.orderRatingA:hover,
+.orderRatingD:hover {
+  background-color: #eee;
+}
