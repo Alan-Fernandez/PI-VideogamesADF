@@ -1,13 +1,12 @@
-import { createStore, applyMiddleware, compose } from "redux";
-import * as thunkMiddleware from "redux-thunk";
-import rootReducer from "../reducer/index";
+import { applyMiddleware, legacy_createStore as createStore } from "redux";
+import thunk from "redux-thunk";
+import rootReducer from "../reducer/index.js";
 
-// * conexion al browser
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; 
+import { composeWithDevTools } from '@redux-devtools/extension'; // * conexion al browser
 
 const store = createStore(
-    rootReducer,
-    composeEnhancer(applyMiddleware(thunkMiddleWare))
+  rootReducer,
+  composeWithDevTools(applyMiddleware(thunk))
 ); // * conexion del reducer con el servidor (api/db)
 
 export default store;

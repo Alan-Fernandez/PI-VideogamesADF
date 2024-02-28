@@ -5,8 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #b9d2d2;
-  background-image: url("./assets/3226135.jpg");
+  background-color: #000000c6; 
+  background: linear-gradient(to bottom, #1b2838 70%, #111b29 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -16,3 +16,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+

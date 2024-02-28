@@ -76,7 +76,7 @@ const Form = () => {
       };
 
       axios
-        .post("http://localhost:3001/videogames", newDog)
+        .post("http://localhost:3001/api/v1/videogames", newDog)
         .then((res) => {
           alert("Game Created Successfully");
           setForm({
