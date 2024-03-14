@@ -7,6 +7,7 @@ const formatVideogames = require("../helpers/formatVideogames.helpers");
 const { Op } = require("sequelize");
 const apiGames = 15;
 
+//filtro nombre
 const searchVideogamesByName = async (name) => {
   name.toLowerCase();
   const dataBaseVideogame = await Videogame.findAll({
@@ -17,12 +18,15 @@ const searchVideogamesByName = async (name) => {
     ],
   });
   const apiGamesMax = apiGames - dataBaseVideogame.length;
+
   const apiVideogameRaw = (
     await axios.get(
       `${URL_VIDEOGAMES_BY_NAME}${name}&key=${API_KEY}&page_size=${apiGamesMax}`
     )
   ).data.results;
+  
   const apiVideogame = formatVideogames(apiVideogameRaw);
+
   if (dataBaseVideogame.length || apiVideogame.length) {
     return [...dataBaseVideogame, ...apiVideogame];
   } else {

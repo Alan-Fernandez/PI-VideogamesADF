@@ -1,4 +1,5 @@
 const formatVideogameId = (object) => {
+
   const apiVideogameById = {
     id: object.id,
     name: object.name,
@@ -12,6 +13,7 @@ const formatVideogameId = (object) => {
       name: element.platform.name,
     })),
   };
+  
   return apiVideogameById;
 };
 

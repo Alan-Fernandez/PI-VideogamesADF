@@ -4,7 +4,10 @@ const formatVideogames = require("../helpers/formatVideogames.helpers");
 const URL_VIDEOGAMES = "https://api.rawg.io/api/games";
 const { API_KEY } = process.env;
 
+// Función para obtener todos los videojuegos
 const getAllVideogames = async () => {
+
+  //Base de datos local
   const dataBaseVideogame = await Videogame.findAll({
     include: [
       { model: Genres, attributes: ["name"], through: { attributes: [] } },
@@ -14,10 +17,13 @@ const getAllVideogames = async () => {
       exclude: ["description"],
     },
   });
+
+   //Almacenar los videojuegos obtenidos de la API externa
   const apiVideogameRaw = [];
   const totalPages = 4;
   const pageSize = 25;
   const apiRequests = [];
+
   for (let pageNumber = 1; pageNumber <= totalPages; pageNumber++) {
     apiRequests.push(
       axios.get(

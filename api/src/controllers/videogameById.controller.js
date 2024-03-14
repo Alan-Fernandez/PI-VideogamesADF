@@ -4,6 +4,7 @@ const { API_KEY } = process.env;
 const URL_VIDEOGAMES_BY_ID = "https://api.rawg.io/api/games/";
 const formatVideogameId = require("../helpers/formatVideogameById.helpers");
 
+// Función para obtener un videojuego por su ID
 const getVideogamesById = async (id, searchSource) => {
   if (searchSource === "db") {
     const dbVideogame = await Videogame.findByPk(id, {

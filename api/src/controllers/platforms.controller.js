@@ -3,12 +3,17 @@ const axios = require("axios");
 const { API_KEY } = process.env;
 const { URL_VIDEOGAMES } = require("../helpers/url.helpers");
 
+
+//  Función para obtener todas las plataforma
 const getAllPlatforms = async () => {
+
+// Verifica si no hay plataformas almacenadas en la base de datos
   if ((await Platforms.count()) === 0) {
     const allGames = [];
     const totalPages = 150;
     const pageSize = 40;
     const apiRequests = [];
+
     for (let pageNumber = 50; pageNumber <= totalPages; pageNumber++) {
       apiRequests.push(
         axios.get(
@@ -18,11 +23,13 @@ const getAllPlatforms = async () => {
     }
     try {
       const responses = await Promise.all(apiRequests);
+      
       responses.forEach((response) => {
         const gamesOnPage = response.data.results;
         allGames.push(...gamesOnPage);
       });
     } catch (error) {
+      // Manejo de errores en caso de que falle alguna solicitud
       console.error("Error fetching data:", error.message);
     }
     const platformsAuxArray = [];

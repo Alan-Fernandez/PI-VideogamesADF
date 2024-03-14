@@ -4,6 +4,8 @@ const { Videogame, Genres, Platforms } = require("../db");
 const { getAllGenres } = require("./genres.controller");
 const { getAllPlatforms } = require("./platforms.controller");
 
+
+// Función para crear un nuevo videojuego
 const createVideogame = async (
   name,
   description,
@@ -22,15 +24,19 @@ const createVideogame = async (
   });
 
   await getAllGenres();
+
   const allGenres = await Genres.findAll({
     where: { name: genres },
   });
+
   await newVideogame.setGenres(allGenres);
   await getAllPlatforms();
+
   const allPlatforms = await Platforms.findAll({
     where: { name: platforms },
   });
   await newVideogame.setPlatforms(allPlatforms);
+  
   await newVideogame.reload({
     include: [
       {

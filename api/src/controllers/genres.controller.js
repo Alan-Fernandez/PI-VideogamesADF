@@ -5,6 +5,7 @@ const { API_KEY } = process.env;
 const { URL_GENRES, LIMIT } = require("../helpers/url.helpers");
 const genresAuxArray = [];
 
+// Función para obtener todos los géneros
 const getAllGenres = async () => {
 
   if ((await Genres.count()) === 0) {
