@@ -1,8 +1,12 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import validate from "./validate";
 import { useDispatch, useSelector } from "react-redux";
 import { getGenres, getPlatforms } from "../../redux/actions";
+import InputField from "../../components/InputField/InputField";
+import SelectField from "../../components/SelectField/SelectField";
+import Modal from "../../components/Modal/Modal";
 import style from "./Form.module.css";
 
 const Form = () => {
@@ -12,6 +16,8 @@ const Form = () => {
     dispatch(getPlatforms());
   }, [dispatch]);
 
+  const [message, setMessage] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const [form, setForm] = useState({
     name: "",
     description: "",
@@ -33,9 +39,30 @@ const Form = () => {
   });
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [selectedPlatforms, setSelectedPlatforms] = useState([]);
+
+  const toggleModal = () =>{ 
+    setShowModal(!showModal)
+  }
+
+
+const transformDate = (date) => {
+  const parts = date.split("/");
+  if (parts.length !== 3) {
+    return date;
+  }
+  const [day, month, year] = parts;
+  return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+};
+
+
+
   const changeHandler = (event) => {
     const property = event.target.name;
-    const value = event.target.value;
+    let value = event.target.value;
+
+    if (property === "released") {
+      value = transformDate(value);
+    }
     setErrors(validate({ ...form, [property]: value }));
     setForm({ ...form, [property]: value });
   };
@@ -45,7 +72,6 @@ const Form = () => {
 
     const uniqueOptions = new Set(selectedGenres);
     uniqueOptions.add(selectedOptions);
-    console.log("Selected Genres:", selectedOptions);
     setSelectedGenres(Array.from(uniqueOptions));
   };
 
@@ -54,15 +80,15 @@ const Form = () => {
 
     const uniqueOptions = new Set(selectedPlatforms);
     uniqueOptions.add(selectedOptions);
-    console.log("Selected PLatforms:", selectedOptions);
     setSelectedPlatforms(Array.from(uniqueOptions));
   };
 
-  const SubmitHandler = (event) => {
-    event.preventDefault();
+const SubmitHandler = async (event) => {
+  event.preventDefault();
+  try {
     if (
-      (Object.keys(errors).length === 0) &
-      (selectedPlatforms.length !== 0) &
+      (Object.keys(errors).length === 0) &&
+      (selectedPlatforms.length !== 0) &&
       (selectedGenres.length !== 0)
     ) {
       const newDog = {
@@ -75,150 +101,132 @@ const Form = () => {
         platforms: selectedPlatforms,
       };
 
-      axios
-        .post("http://localhost:3001/api/v1/videogames", newDog)
-        .then((res) => {
-          alert("Game Created Successfully");
-          setForm({
-            name: "",
-            description: "",
-            background_image: "",
-            released: "",
-            rating: "",
-            genres: "",
-            platforms: "",
-          });
-          setSelectedGenres([]);
-          setSelectedPlatforms([]);
-        })
-        .catch((error) => alert("Failed to Create Game"));
+      await axios.post("http://localhost:3001/api/v1/videogames", newDog);
+
+      setMessage("Game Created Successfully");
+
+      setShowModal(true);
+      setForm({
+        name: "",
+        description: "",
+        background_image: "",
+        released: "",
+        rating: "",
+        genres: "",
+        platforms: "",
+      });
+      setSelectedGenres([]);
+      setSelectedPlatforms([]);
     }
-  };
+  } catch (error) {
+    setMessage("Failed to Create Game");
+    setShowModal(true);
+  }
+};
+
+  const navigate = useNavigate();
+  function handleBackClick() {
+    navigate(-1);
+  }
+
   const genres = useSelector((state) => state.genres);
   const platforms = useSelector((state) => state.platforms);
+      <button className={style.backButton} onClick={handleBackClick}>
+        Go Back
+      </button>
 
   return (
-    <form className={style.form} onSubmit={SubmitHandler}>
-      <div className={style.divName}>
-        <label className={style.labelName}>Name: </label>
-        <input
-          className={style.inputName}
-          type="text"
-          value={form.name}
-          onChange={changeHandler}
-          name="name"
-        ></input>
-        <span className={style.errorName}>
-          {errors.name1 ? <p>{errors.name1}</p> : <p>{errors.name2}</p>}
-        </span>
-      </div>
-      <div className={style.divDescription}>
-        <label className={style.labelDescription}>Description: </label>
-        <textarea
-          className={style.inputDescription}
-          value={form.description}
-          onChange={changeHandler}
-          name="description"
-          rows="6"
-        />
-        <span className={style.errorDescription}>
-          {errors.description1 ? (
-            <p>{errors.description1}</p>
-          ) : (
-            <p>{errors.description2}</p>
-          )}
-        </span>
-      </div>
-      <div className={style.divImage}>
-        <label className={style.labelImage}>Background_image: </label>
-        <input
-          className={style.inputImage}
-          type="text"
-          value={form.background_image}
-          onChange={changeHandler}
-          name="background_image"
-        ></input>
-        <span className={style.errorImage}>
-          <p>{errors.background_image}</p>
-        </span>
-      </div>
-      <div className={style.divReleased}>
-        <label className={style.labelReleased}>Released: </label>
-        <input
-          className={style.inputReleased}
-          type="text"
-          value={form.released}
-          onChange={changeHandler}
-          name="released"
-        ></input>
-        <span className={style.errorReleased}>
-          {errors.released1 ? (
-            <p>{errors.released1}</p>
-          ) : (
-            <p>{errors.released2}</p>
-          )}
-        </span>
-      </div>
+    <div>
 
-      <div className={style.divRating}>
-        <label className={style.labelRating}>Rating: </label>
-        <input
-          className={style.inputRating}
-          type="text"
-          value={form.rating}
-          onChange={changeHandler}
-          name="rating"
-        ></input>
-        <span className={style.errorRating}>
-          {errors.rating1 ? <p>{errors.rating1}</p> : <p>{errors.rating2}</p>}
-        </span>
-      </div>
-      <div>
-        <select
-          className={style.genres}
-          multiple
-          value={selectedGenres}
-          onChange={handleGenresChange}
+      <form 
+        // className={style.form} 
+        onSubmit={SubmitHandler}
+      >
+        
+        <Modal
+          toggleModal={toggleModal}
+          showModal={showModal}
         >
-          {genres &&
-            genres.map((genre, index) => (
-              <option key={index} value={genre.name}>
-                {genre.name}
-              </option>
-            ))}
-        </select>
-      </div>
-      <div>
-        <p className={style.selectedGenres}>
-          SELECTED GENRES: {selectedGenres.join(", ")}
-        </p>
-      </div>
+          <h1>{message}</h1>
+        </Modal>
 
-      <div>
-        <select
-          className={style.platforms}
-          multiple
-          value={selectedPlatforms}
-          onChange={handlePlatformsChange}
+        <h1 className={style.title}>Create Game</h1>
+
+        <div>
+          <div
+            className={style.form} 
+          >          
+            <InputField 
+              label="Name: " 
+              type="text" 
+              value={form.name} 
+              onChange={changeHandler} 
+              name="name" 
+              errors={errors} 
+            />
+
+            <InputField 
+              label="Background_image: " 
+              type="text" 
+              value={form.background_image} 
+              onChange={changeHandler} 
+              name="background_image" 
+              errors={errors} 
+            />
+            <InputField 
+              label="Released: " 
+              type="date" 
+              value={form.released} 
+              onChange={changeHandler} 
+              name="released" 
+              errors={errors} 
+            />
+            <InputField 
+              label="Rating: " 
+              type="text" 
+              value={form.rating} 
+              onChange={changeHandler} 
+              name="rating" 
+              errors={errors} 
+            />
+
+            <InputField 
+                label="Description: " 
+                type="textarea" 
+                value={form.description} 
+                onChange={changeHandler} 
+                name="description" 
+                errors={errors} 
+              />
+          </div>
+          <div
+            className={style.selectContainer}
+          >
+            <SelectField 
+              name="genres" 
+              value={selectedGenres} 
+              onChange={handleGenresChange} 
+              options={genres} 
+            />
+            <SelectField 
+              name="platforms" 
+              value={selectedPlatforms} 
+              onChange={handlePlatformsChange} 
+              options={platforms} 
+            />
+          </div>
+
+            <div>
+          </div>
+        </div>
+        <button 
+          className={style.submitButton} 
+          type="submit"
         >
-          {platforms &&
-            platforms.map((platform, index) => (
-              <option key={index} value={platform.name}>
-                {platform.name}
-              </option>
-            ))}
-        </select>
-      </div>
-      <div>
-        <p className={style.selectedPlatforms}>
-          SELECTED PLATFORMS: {selectedPlatforms.join(", ")}
-        </p>
-      </div>
-
-      <button className={style.submitButton} type="submit">
-        SUBMIT
-      </button>
-    </form>
+          SUBMIT
+        </button>
+      </form>
+    </div>
   );
 };
 

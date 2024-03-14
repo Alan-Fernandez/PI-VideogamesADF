@@ -1,0 +1,31 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    width: 60%;
+    max-height: 60%; 
+    overflow-y: auto;
+}
+
+
+.button {
+    background-color: #007bff; /* Cambia el color de fondo del botón según tu preferencia */
+    color: #fff; /* Cambia el color del texto del botón según tu preferencia */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px; /* Ajusta el espacio entre el contenido del modal y el botón */
+}

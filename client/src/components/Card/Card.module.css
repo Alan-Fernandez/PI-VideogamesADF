@@ -20,7 +20,7 @@
 
 .name {
     color: #dedbe9;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P', Roboto;
     font-size: 26px;
     margin-bottom: 5px;
     white-space: normal;
@@ -29,14 +29,14 @@
 }
 
 .rating {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P', Roboto;
     color: #dedbe9;
     font-size: 24px;
     margin-top: 5px;
 }
 
 .genres {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P', Roboto;
     color: #dedbe9;
     font-size: 22px;
     margin-top: 5px;

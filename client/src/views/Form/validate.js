@@ -22,9 +22,9 @@ const validate = (form) => {
   if (rating < 0 || rating > 5) {
     errors.rating1 = "Rating must be between 0 and 5";
   }
-  if (!dateRegEx.test(released)) {
-    errors.released2 = "Incorrect Date format. eg 2020-8-20";
-  }
+  // if (!dateRegEx.test(released)) {
+  //   errors.released2 = "Incorrect Date format. eg 2020-8-20";
+  // }
   if (released.length === 0) {
     errors.released1 = "Required released";
   }

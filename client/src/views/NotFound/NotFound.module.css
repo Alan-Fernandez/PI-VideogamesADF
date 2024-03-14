@@ -1,18 +1,18 @@
 .image-container {
-  position: relative; /* Establecer el contenedor como posición relativa */
-  width: 90vw; /* Ajustar el ancho del contenedor */
-  height: 50vw; /* Ajustar la altura del contenedor */
-  float: right; /* Alinear la imagen a la derecha */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(40vh - 10px); 
 }
 
 .image {
-  width: 100%; /* La imagen ocupa todo el ancho del contenedor */
-  height: 100%; /* La imagen ocupa todo el alto del contenedor */
+  max-width: 100%; 
+  max-height: 100%;
 }
 .backButton {
   position: absolute;
-  top: 40px; /* Posicionar el botón a 20px del borde superior */
-  left: 50px; /* Posicionar el botón a 20px del borde izquierdo */
+  top: 40px; 
+  left: 50px;
   background-color: #007bff;
   color: white;
   border: none;

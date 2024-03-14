@@ -1,0 +1,20 @@
+
+.selectField {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  margin: 20px;
+  overflow: auto;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+.selectField::-webkit-scrollbar {
+  display: none;
+}
+
+.selectField option {
+  padding: 10px;
+}

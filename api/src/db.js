@@ -8,15 +8,14 @@ const { VIDEOGAMES } = require("./helpers/routes.helpers");
 const sequelize = new Sequelize(
   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}${VIDEOGAMES}`,
   {
-    logging: false, // set to console.log to see the raw SQL queries
-    native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+    logging: false,
+    native: false, 
   }
 );
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
 
-// Leemos todos los archivos de la carpeta Models, los requerimos y agregamos al arreglo modelDefiners
 fs.readdirSync(path.join(__dirname, "/models"))
   .filter(
     (file) =>
@@ -48,6 +47,6 @@ Videogame.belongsToMany(Platforms, { through: "videogame_platforms" });
 Platforms.belongsToMany(Videogame, { through: "videogame_platforms" });
 
 module.exports = {
-  ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
-  conn: sequelize, // para importart la conexión { conn } = require('./db.js');
+  ...sequelize.models,
+  conn: sequelize,
 };
