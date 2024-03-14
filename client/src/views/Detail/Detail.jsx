@@ -18,6 +18,7 @@ const Detail = () => {
     dispatch(clean_detail());
     dispatch(getVideogameById(id));
   }, [dispatch, id]);
+  
   const videogame = useSelector((state) => state.videogame);
 
   return (

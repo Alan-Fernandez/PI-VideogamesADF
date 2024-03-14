@@ -10,15 +10,18 @@ const Home = () => {
   function handleBackClick() {
     navigate(-1);
   }
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getVideogames());
   }, [dispatch]);
+
   return (
     <>
       <button className={style.backButton} onClick={handleBackClick}>
         Go Back
       </button>
+      
       <CardsContainer />
     </>
   );

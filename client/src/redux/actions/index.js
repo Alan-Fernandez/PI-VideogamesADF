@@ -22,8 +22,10 @@ export const getVideogames = () => {
 
 export const getVideogameById = (id) => {
     const endpoint = `${BASE_URL}/videogames/${id}`;
+
     return async (dispatch) => {
         const videogameById = (await axios.get(endpoint)).data;
+        
         return dispatch({ type: GET_VIDEOGAME_BY_ID, payload: videogameById });
     };
 };

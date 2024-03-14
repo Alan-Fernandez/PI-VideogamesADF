@@ -40,6 +40,7 @@ const CardsContainer = () => {
             />
           );
         })}
+        
       </div>
       {videogamesRender.length > ITEMS_PER_PAGE ? (
         <div className={style.divPage}>
