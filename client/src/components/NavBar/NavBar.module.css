@@ -29,3 +29,21 @@
 .home:hover {
   background-color: #0056b3;
 }
+
+.links {
+  position: absolute;
+  right: 0;
+  top: 3;
+}
+
+
+.searchBar {
+  position: relative;
+  z-index: 2;
+  transform: scale(0.8);
+}
+
+.filtersBar {
+  position: relative;
+  z-index: 1;
+}

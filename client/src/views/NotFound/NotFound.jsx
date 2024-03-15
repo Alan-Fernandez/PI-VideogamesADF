@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import style from "./NotFound.module.css";
-import notFoundImage from "../../assets/error-404.jpg";
+import PageNotFound from "../../components/PageNotFound/PageNotFound";
+
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const NotFound = () => {
       <button className={style.backButton} onClick={handleBackClick}>
         Go Back
       </button>
-      <img className={style.image} src={notFoundImage} alt=""></img>
+      <PageNotFound />
     </div>
   );
 };

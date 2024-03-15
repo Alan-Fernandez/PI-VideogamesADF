@@ -12,8 +12,15 @@ const Landing = () => {
         Epic Plays <span id="colorSpan"></span>
       </h1>
       {/* imagen de landing */}
-      <button className={style.button} onClick={access}>
-        Start
+      <button 
+        className={style.button} 
+        onClick={access}
+      >
+        <img
+          className={style.img}
+          src="./—Pngtree—video games console_6943752.png"
+          alt="landing"
+          />
       </button>
     </div>
   );
