@@ -131,12 +131,12 @@ const SubmitHandler = async (event) => {
 
   const genres = useSelector((state) => state.genres);
   const platforms = useSelector((state) => state.platforms);
-      <button className={style.backButton} onClick={handleBackClick}>
-        Go Back
-      </button>
 
   return (
     <div>
+      <button className={style.backButton} onClick={handleBackClick}>
+        Go Back
+      </button>
 
       <form 
         // className={style.form} 
