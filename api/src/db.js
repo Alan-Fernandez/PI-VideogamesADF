@@ -5,6 +5,7 @@ const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 const { VIDEOGAMES } = require("./helpers/routes.helpers");
 
+//conexión a la base de datos s
 const sequelize = new Sequelize(
   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}${VIDEOGAMES}`,
   {
