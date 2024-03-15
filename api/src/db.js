@@ -40,7 +40,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 // Para relacionarlos hacemos un destructuring
 const { Videogame, Genres, Platforms } = sequelize.models;
 
-// Aca vendrian las relaciones
+// Relaciones
 // Product.hasMany(Reviews);
 Videogame.belongsToMany(Genres, { through: "videogame_genres" });
 Genres.belongsToMany(Videogame, { through: "videogame_genres" });

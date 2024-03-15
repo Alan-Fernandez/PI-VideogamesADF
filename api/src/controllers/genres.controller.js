@@ -15,6 +15,7 @@ const getAllGenres = async () => {
       return genresAuxArray.push({ name: element.name });
     });
 
+    // Insertar los géneros en la base de datos
     await Genres.bulkCreate(genresAuxArray);
 
     return Genres.findAll({ model: Genres, attributes: ["name"] });
