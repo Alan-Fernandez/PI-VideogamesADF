@@ -21,13 +21,13 @@
   z-index: 1;
   padding: 5px 25px;
   color: white;
-  background-color: #007bff;
+  background-color: #007bff66;
   border: none;
 }
 
 .form:hover,
 .home:hover {
-  background-color: #0056b3;
+  background-color: #0057b36a;
 }
 
 .links {

@@ -9,7 +9,7 @@
 .origin {
   top: 20px;
   left: 20px;
-  background-color: #007bff;
+  background-color: #007bff68;
   color: white;
   border: none;
   padding: 5px 5px;
@@ -22,7 +22,7 @@
   z-index: 1;
 }
 .order:hover .genres:hover .origin:hover {
-  background-color: #0056b3;
+  background-color: #007bff46;
 }
 
 .allVideogames,
@@ -30,9 +30,9 @@
 .dbVideogames {
   margin: 10px;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid #fefcfc;
   border-radius: 5px;
-  background-color: #0056b3;
+  background-color: #007bff3a;
 }
 
 .genresOptions,
